@@ -1,0 +1,1462 @@
+---
+title: "Assignment 1"
+author: "Zian Lu"
+date: "2022/2/3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+install.packages('jrvFinance')
+install.packages('stringr')
+```
+
+```{r}
+library(jrvFinance)
+library(stringr)
+```
+
+
+```{r}
+YTMDATA=read.csv(file="A1Cleandatacsv.CSV")
+Date = c("2022/1/10","2022/1/11","2022/1/12","2022/1/13","2022/1/14","2022/1/17","2022/1/18","2022/1/19","2022/1/20","2022/1/21")
+cr=c(0.25e-2,0.25e-2,0.25e-2,2.25e-2,1.5e-2,1.25e-2,0.5e-2,0.25e-2,1e-2,1.25e-2)
+days_<-as.Date(YTMDATA$maturity.date)-as.Date("2022-01-10")
+YTMDATA["days_to_mature"] <- as.numeric(days_)
+```
+
+#"2022-01-10"
+```{r}
+n1 <- c(1:10)
+ytm10=c()
+for (i in n1){
+y10=bond.yields(as.Date("2022-01-10"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.10[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm10[i]=y10
+}
+ytm10_1=YTMDATA$days_to_mature/365
+```
+
+#"2022-01-11"
+```{r}
+n1 <- c(1:10)
+ytm11=c()
+for (i in n1){
+y11=bond.yields(as.Date("2022-01-11"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.11[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm11[i]=y11
+}
+ytm11_1=(YTMDATA$days_to_mature/365 +1/365)
+```
+
+#"2022-01-12"
+```{r}
+n1 <- c(1:10)
+ytm12=c()
+for (i in n1){
+y12=bond.yields(as.Date("2022-01-12"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.12[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm12[i]=y12
+}
+ytm12_1=(YTMDATA$days_to_mature/365 +2/365)
+```
+
+#"2022-01-13"
+```{r}
+n1 <- c(1:10)
+ytm13=c()
+for (i in n1){
+y13=bond.yields(as.Date("2022-01-13"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.13[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm13[i]=y13
+}
+ytm13_1=(YTMDATA$days_to_mature/365 +3/365)
+```
+
+#"2022-01-14"
+```{r}
+n1 <- c(1:10)
+ytm14=c()
+for (i in n1){
+y14=bond.yields(as.Date("2022-01-14"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.14[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm14[i]=y14
+}
+ytm14_1=(YTMDATA$days_to_mature/365 +4/365)
+```
+
+#"2022-01-17"
+```{r}
+n1 <- c(1:10)
+ytm17=c()
+for (i in n1){
+y17=bond.yields(as.Date("2022-01-17"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.17[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm17[i]=y17
+}
+ytm17_1=(YTMDATA$days_to_mature/365 +7/365)
+```
+
+#"2022-01-18"
+```{r}
+n1 <- c(1:10)
+ytm18=c()
+for (i in n1){
+y18=bond.yields(as.Date("2022-01-18"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.18[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm18[i]=y18
+}
+ytm18_1=(YTMDATA$days_to_mature/365 +8/365)
+```
+
+#"2022-01-19"
+```{r}
+n1 <- c(1:10)
+ytm19=c()
+for (i in n1){
+y19=bond.yields(as.Date("2022-01-19"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.19[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm19[i]=y19
+}
+ytm19_1=(YTMDATA$days_to_mature/365 +9/365)
+```
+
+#"2022-01-20"
+```{r}
+n1 <- c(1:10)
+ytm20=c()
+for (i in n1){
+y20=bond.yields(as.Date("2022-01-20"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.20[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm20[i]=y20
+}
+ytm20_1=(YTMDATA$days_to_mature/365 +10/365)
+```
+
+#"2022-01-21"
+```{r}
+n1 <- c(1:10)
+ytm21=c()
+for (i in n1){
+y21=bond.yields(as.Date("2022-01-21"), as.Date(YTMDATA$maturity.date[i]),cr[i],freq=2,YTMDATA$price.jan.21[i],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+ytm21[i]=y21
+}
+ytm21_1=(YTMDATA$days_to_mature/365 +11/365)
+```
+
+
+```{r}
+install.packages("RColorBrewer")
+library(RColorBrewer)
+```
+
+# select colours of plot
+```{r}
+display.brewer.pal(n = 10, name = 'Paired')
+brewer.pal(n = 10, name = "Paired")
+```
+
+# plotting
+```{r}
+color1 <- c("#A6CEE3", "#1F78B4", "#B2DF8A" ,"#33A02C", "#FB9A99" ,"#E31A1C" ,"#FDBF6F" ,"#FF7F00", "#CAB2D6" ,"#6A3D9A")
+plot(ytm10_1,ytm10,t="l",col = color1[1],
+     xlab = "Maturity In Years", ylab = "Yield Rate", 
+     main = "5-Year Yield Curve",
+     ylim=c(0.005,0.018),xlim=c(0,6))
+lines(ytm11_1,ytm11,col = color1[2])
+lines(ytm12_1,ytm12,col = color1[3])
+lines(ytm13_1,ytm13,col = color1[4])
+lines(ytm14_1,ytm14,col = color1[5])
+lines(ytm17_1,ytm17,col = color1[6])
+lines(ytm18_1,ytm18,col = color1[7])
+lines(ytm19_1,ytm19,col = color1[8])
+lines(ytm20_1,ytm20,col = color1[9])
+lines(ytm21_1,ytm21,col = color1[20])
+legend("bottomright", 
+       legend=Date,
+       col=color1,lty=1, cex=0.8,
+       text.font=1)
+```
+
+```{r}
+install.packages('dplyr')
+```
+
+```{r}
+library(dplyr)
+```
+
+
+# 4b
+```{r}
+#first change all prices to dirty price
+LPDC1<-as.numeric(as.Date("2022/1/10")-as.Date("2021/8/1"))
+LPDC4<-as.numeric(as.Date("2022/1/10")-as.Date("2021/9/1"))
+YTMDATA['Days_since_last_pay']=c(LPDC1,LPDC1,LPDC1,LPDC4,LPDC4,LPDC4,LPDC4,LPDC4,LPDC4,LPDC4)
+SPOTDATA<-YTMDATA %>% 
+  mutate('cr'=cr)
+  clean_price=as.numeric(YTMDATA$price.jan.10)
+  accured_interest = ((as.numeric(YTMDATA$Days_since_last_pay))/365)*100*(as.numeric(SPOTDATA$cr))/2
+  dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/10"]=dirty_price
+```
+
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.11)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+1)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/11"]=dirty_price
+```
+  
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.12)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+2)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/12"]=dirty_price
+```
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.13)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+3)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/13"]=dirty_price
+```
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.14)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+4)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/14"]=dirty_price
+```
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.17)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+7)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/17"]=dirty_price
+```
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.18)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+8)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/18"]=dirty_price
+```
+
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.19)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+9)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/19"]=dirty_price
+```
+
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.20)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+10)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/20"]=dirty_price
+```
+
+
+
+```{r}
+clean_price=as.numeric(SPOTDATA$price.jan.21)
+accured_interest = ((as.numeric(SPOTDATA$Days_since_last_pay)+11)/365)*100*(as.numeric(SPOTDATA$cr))/2
+dirty_price=clean_price+accured_interest
+SPOTDATA["2022/1/11"]=dirty_price
+```
+
+
+```{r}
+SD<-SPOTDATA
+SD<-select(SD,-price.jan.10,-price.jan.11,-price.jan.12,-price.jan.13,-price.jan.14,-price.jan.17,-price.jan.18,-price.jan.19,-price.jan.20,-price.jan.21,-coupon)
+```
+
+```{r}
+ZERO=read.csv(file="ZEROCSV.csv")
+```
+
+
+```{r}
+s0=bond.yields(as.Date("2022-01-10"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.10[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+```
+
+# Spot rate 2022/1/10
+```{r}
+s10_1<-(log(SD$`2022/1/10`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*20/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$days_to_mature[1])
+
+s11_1<-(log(SD$`2022/1/10`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$days_to_mature[2])
+
+s12_1<-(log(SD$`2022/1/10`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$days_to_mature[3])
+
+s13_1<-(log(SD$`2022/1/10`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$days_to_mature[4])
+
+s14_1<-(log(SD$`2022/1/10`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$days_to_mature[5])
+
+s17_1<-(log(SD$`2022/1/10`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_1*SD$days_to_mature[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$days_to_mature[6])
+
+s18_1<-(log(SD$`2022/1/10`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_1*SD$days_to_mature[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_1*SD$days_to_mature[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$days_to_mature[7])
+
+s19_1<-(log(SD$`2022/1/10`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_1*SD$days_to_mature[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_1*SD$days_to_mature[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_1*SD$days_to_mature[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$days_to_mature[8])
+
+s20_1<-(log(SD$`2022/1/10`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_1*SD$days_to_mature[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_1*SD$days_to_mature[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_1*SD$days_to_mature[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_1*SD$days_to_mature[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$days_to_mature[9])
+
+s21_1<-(log(SD$`2022/1/10`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*20/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_1*SD$days_to_mature[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_1*SD$days_to_mature[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_1*SD$days_to_mature[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_1*SD$days_to_mature[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_1*SD$days_to_mature[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_1*SD$days_to_mature[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_1*SD$days_to_mature[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_1*SD$days_to_mature[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_1*SD$days_to_mature[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$days_to_mature[10])
+
+spot_10<-c(s10_1,s11_1,s12_1,s13_1,s14_1,s17_1,s18_1,s19_1,s20_1,s21_1)
+maturitu_10<-c(SD$days_to_mature[1],SD$days_to_mature[2],SD$days_to_mature[3],SD$days_to_mature[4],SD$days_to_mature[5],SD$days_to_mature[6],SD$days_to_mature[7],SD$days_to_mature[8],SD$days_to_mature[9],SD$days_to_mature[10])
+```
+# Spot rate 2022/1/11
+```{r}
+s0=bond.yields(as.Date("2022-01-11"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.11[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D2"]= SD$days_to_mature+1
+
+s10_2<-(log(SD$`2022/1/11`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*21/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D2[1])
+
+s11_2<-(log(SD$`2022/1/11`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_2*SD$D2[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D2[2])
+
+s12_2<-(log(SD$`2022/1/11`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_2*SD$D2[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D2[3])
+
+s13_2<-(log(SD$`2022/1/11`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_2*SD$D2[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D2[4])
+
+s14_2<-(log(SD$`2022/1/11`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_2*SD$D2[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D2[5])
+
+s17_2<-(log(SD$`2022/1/11`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_2*SD$D2[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_2*SD$D2[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D2[6])
+
+s18_2<-(log(SD$`2022/1/11`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_2*SD$D2[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_2*SD$D2[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_2*SD$D2[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D2[7])
+
+s19_2<-(log(SD$`2022/1/11`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_2*SD$D2[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_2*SD$D2[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_2*SD$D2[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_2*SD$D2[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D2[8])
+
+s20_2<-(log(SD$`2022/1/11`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_2*SD$D2[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_2*SD$D2[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_2*SD$D2[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_2*SD$D2[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_2*SD$D2[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D2[9])
+
+s21_2<-(log(SD$`2022/1/11`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*21/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_2*SD$D2[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_2*SD$D2[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_2*SD$D2[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_2*SD$D2[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_2*SD$D2[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_2*SD$D2[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_2*SD$D2[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_2*SD$D2[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_2*SD$D2[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D2[10])
+
+spot_11<-c(s10_2,s11_2,s12_2,s13_2,s14_2,s17_2,s18_2,s19_2,s20_2,s21_2)
+maturitu_11<-maturitu_10+1
+```
+# Spot rate 2022/1/12
+```{r}
+s0=bond.yields(as.Date("2022-01-12"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.12[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D3"]= SD$days_to_mature+2
+
+s10_3<-(log(SD$`2022/1/12`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*22/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D3[1])
+
+s11_3<-(log(SD$`2022/1/12`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_3*SD$D3[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D3[2])
+
+s12_3<-(log(SD$`2022/1/12`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_3*SD$D3[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D3[3])
+
+s13_3<-(log(SD$`2022/1/12`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_3*SD$D3[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D3[4])
+
+s14_3<-(log(SD$`2022/1/12`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_3*SD$D3[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D3[5])
+
+s17_3<-(log(SD$`2022/1/12`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_3*SD$D3[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_3*SD$D3[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D2[6])
+
+s18_3<-(log(SD$`2022/1/12`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_3*SD$D3[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_3*SD$D3[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_3*SD$D3[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D3[7])
+
+s19_3<-(log(SD$`2022/1/12`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_3*SD$D3[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_3*SD$D3[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_3*SD$D3[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_3*SD$D3[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D3[8])
+
+s20_3<-(log(SD$`2022/1/12`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_3*SD$D3[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_3*SD$D3[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_3*SD$D3[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_3*SD$D3[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_3*SD$D3[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D3[9])
+
+s21_3<-(log(SD$`2022/1/12`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*22/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_3*SD$D3[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_3*SD$D3[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_3*SD$D3[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_3*SD$D3[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_3*SD$D3[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_3*SD$D3[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_3*SD$D3[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_3*SD$D3[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_3*SD$D3[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D3[10])
+
+spot_12<-c(s10_3,s11_3,s12_3,s13_3,s14_3,s17_3,s18_3,s19_3,s20_3,s21_3)
+maturitu_12<-maturitu_10+2
+```
+# Spot rate 2022/1/13
+```{r}
+s0=bond.yields(as.Date("2022-01-13"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.13[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D4"]= SD$days_to_mature+3
+
+s10_4<-(log(SD$`2022/1/13`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*23/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D4[1])
+
+s11_4<-(log(SD$`2022/1/13`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_4*SD$D4[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D4[2])
+
+s12_4<-(log(SD$`2022/1/13`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_4*SD$D4[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D4[3])
+
+s13_4<-(log(SD$`2022/1/13`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_4*SD$D4[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D4[4])
+
+s14_4<-(log(SD$`2022/1/13`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_4*SD$D4[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D4[5])
+
+s17_4<-(log(SD$`2022/1/13`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_4*SD$D4[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_4*SD$D4[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D4[6])
+
+s18_4<-(log(SD$`2022/1/13`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_4*SD$D4[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_4*SD$D4[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_14*SD$D4[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D4[7])
+
+s19_4<-(log(SD$`2022/1/13`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_4*SD$D4[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_4*SD$D4[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_4*SD$D4[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_4*SD$D4[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D4[8])
+
+s20_4<-(log(SD$`2022/1/13`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_4*SD$D4[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_4*SD$D4[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_4*SD$D4[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_4*SD$D4[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_4*SD$D4[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D4[9])
+
+s21_4<-(log(SD$`2022/1/13`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*23/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_4*SD$D4[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_4*SD$D4[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_4*SD$D4[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_4*SD$D4[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_4*SD$D4[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_4*SD$D4[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_4*SD$D4[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_4*SD$D4[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_4*SD$D4[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D4[10])
+
+spot_13<-c(s10_4,s11_4,s12_4,s13_4,s14_4,s17_4,s18_4,s19_4,s20_4,s21_4)
+maturitu_13<-maturitu_10+3
+```
+# Spot rate 2022/1/14
+```{r}
+s0=bond.yields(as.Date("2022-01-14"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.14[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D5"]= SD$days_to_mature+4
+
+s10_5<-(log(SD$`2022/1/14`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*24/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D5[1])
+
+s11_5<-(log(SD$`2022/1/14`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_5*SD$D5[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D5[2])
+
+s12_5<-(log(SD$`2022/1/14`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_5*SD$D5[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D5[3])
+
+s13_5<-(log(SD$`2022/1/14`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_5*SD$D5[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D5[4])
+
+s14_5<-(log(SD$`2022/1/14`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_5*SD$D5[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D4[5])
+
+s17_5<-(log(SD$`2022/1/14`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_5*SD$D5[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_5*SD$D5[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D5[6])
+
+s18_5<-(log(SD$`2022/1/14`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_5*SD$D5[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_5*SD$D5[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_5*SD$D5[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D5[7])
+
+s19_5<-(log(SD$`2022/1/14`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_5*SD$D5[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_5*SD$D5[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_5*SD$D5[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_5*SD$D5[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D5[8])
+
+s20_5<-(log(SD$`2022/1/14`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_5*SD$D5[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_5*SD$D5[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_5*SD$D5[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_5*SD$D5[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_5*SD$D5[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D5[9])
+
+s21_5<-(log(SD$`2022/1/14`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*24/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_5*SD$D5[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_5*SD$D5[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_5*SD$D5[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_5*SD$D5[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_5*SD$D5[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_5*SD$D5[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_5*SD$D5[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_5*SD$D5[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_5*SD$D5[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D5[10])
+
+spot_14<-c(s10_5,s11_5,s12_5,s13_5,s14_5,s17_5,s18_5,s19_5,s20_5,s21_5)
+maturitu_14<-maturitu_10+4
+```
+# Spot rate 2022/1/17
+```{r}
+s0=bond.yields(as.Date("2022-01-17"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.17[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D6"]= SD$days_to_mature+7
+
+s10_6<-(log(SD$`2022/1/17`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*27/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D6[1])
+
+s11_6<-(log(SD$`2022/1/17`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_6*SD$D6[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D6[2])
+
+s12_6<-(log(SD$`2022/1/17`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_6*SD$D6[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D6[3])
+
+s13_6<-(log(SD$`2022/1/17`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_6*SD$D6[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D6[4])
+
+s14_6<-(log(SD$`2022/1/17`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_6*SD$D6[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D6[5])
+
+s17_6<-(log(SD$`2022/1/17`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_6*SD$D6[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_6*SD$D6[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D6[6])
+
+s18_6<-(log(SD$`2022/1/17`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_6*SD$D6[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_6*SD$D6[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_6*SD$D6[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D6[7])
+
+s19_6<-(log(SD$`2022/1/17`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_6*SD$D6[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_6*SD$D6[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_6*SD$D6[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_6*SD$D6[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D6[8])
+
+s20_6<-(log(SD$`2022/1/17`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_6*SD$D6[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_6*SD$D6[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_6*SD$D6[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_6*SD$D6[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_6*SD$D6[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D6[9])
+
+s21_6<-(log(SD$`2022/1/17`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*27/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_6*SD$D6[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_6*SD$D6[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_6*SD$D6[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_6*SD$D6[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_6*SD$D6[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_6*SD$D6[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_6*SD$D6[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_6*SD$D6[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_6*SD$D6[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D6[106])
+
+spot_17<-c(s10_6,s11_6,s12_6,s13_6,s14_6,s17_6,s18_6,s19_6,s20_6,s21_6)
+maturitu_17<-maturitu_10+7
+```
+# Spot rate 2022/1/18
+```{r}
+s0=bond.yields(as.Date("2022-01-18"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.18[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D7"]= SD$days_to_mature+8
+
+s10_7<-(log(SD$`2022/1/18`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*28/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D7[1])
+
+s11_7<-(log(SD$`2022/1/18`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_7*SD$D7[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D7[2])
+
+s12_7<-(log(SD$`2022/1/18`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_7*SD$D7[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D7[3])
+
+s13_7<-(log(SD$`2022/1/18`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_7*SD$D7[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D7[4])
+
+s14_7<-(log(SD$`2022/1/18`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_7*SD$D7[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D7[5])
+
+s17_7<-(log(SD$`2022/1/18`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_7*SD$D7[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_7*SD$D7[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D7[6])
+
+s18_7<-(log(SD$`2022/1/18`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_7*SD$D7[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_7*SD$D7[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_7*SD$D7[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D7[7])
+
+s19_7<-(log(SD$`2022/1/18`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_7*SD$D7[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_7*SD$D7[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_7*SD$D7[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_7*SD$D7[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D7[8])
+
+s20_7<-(log(SD$`2022/1/18`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_7*SD$D7[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_7*SD$D7[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_7*SD$D7[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_7*SD$D7[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_7*SD$D7[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D7[9])
+
+s21_7<-(log(SD$`2022/1/18`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*28/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_7*SD$D7[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_7*SD$D7[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_7*SD$D7[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_7*SD$D7[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_7*SD$D7[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_7*SD$D7[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_7*SD$D7[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_7*SD$D7[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_7*SD$D7[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D6[106])
+
+spot_18<-c(s10_7,s11_7,s12_7,s13_7,s14_7,s17_7,s18_7,s19_7,s20_7,s21_7)
+maturitu_18<-maturitu_10+8
+```
+# Spot rate 2022/1/19
+```{r}
+s0=bond.yields(as.Date("2022-01-19"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.19[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D8"]= SD$days_to_mature+9
+
+s10_8<-(log(SD$`2022/1/19`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*29/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D8[1])
+
+s11_8<-(log(SD$`2022/1/19`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_8*SD$D8[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D8[2])
+
+s12_8<-(log(SD$`2022/1/19`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_8*SD$D8[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D8[3])
+
+s13_8<-(log(SD$`2022/1/19`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_8*SD$D8[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D8[4])
+
+s14_8<-(log(SD$`2022/1/19`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_8*SD$D8[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D8[5])
+
+s17_8<-(log(SD$`2022/1/19`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_8*SD$D8[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_8*SD$D8[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D8[6])
+
+s18_8<-(log(SD$`2022/1/19`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_8*SD$D8[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_8*SD$D8[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_8*SD$D8[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D8[7])
+
+s19_8<-(log(SD$`2022/1/19`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_8*SD$D8[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_8*SD$D8[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_8*SD$D8[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_8*SD$D8[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D8[8])
+
+s20_8<-(log(SD$`2022/1/19`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_8*SD$D8[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_8*SD$D8[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_8*SD$D8[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_8*SD$D8[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_8*SD$D8[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D8[9])
+
+s21_8<-(log(SD$`2022/1/19`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*29/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_8*SD$D8[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_8*SD$D8[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_8*SD$D8[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_8*SD$D8[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_8*SD$D8[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_8*SD$D8[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_8*SD$D8[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_8*SD$D8[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_8*SD$D8[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D8[106])
+
+spot_19<-c(s10_8,s11_8,s12_8,s13_8,s14_8,s17_8,s18_8,s19_8,s20_8,s21_8)
+maturitu_19<-maturitu_10+9
+```
+# Spot rate 2022/1/20
+```{r}
+s0=bond.yields(as.Date("2022-01-20"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.20[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D9"]= SD$days_to_mature+10
+
+s10_9<-(log(SD$`2022/1/20`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*30/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D9[1])
+
+s11_9<-(log(SD$`2022/1/20`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_9*SD$D9[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D9[2])
+
+s12_9<-(log(SD$`2022/1/20`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_9*SD$D9[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D9[3])
+
+s13_9<-(log(SD$`2022/1/20`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_9*SD$D9[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D9[4])
+
+s14_9<-(log(SD$`2022/1/20`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_9*SD$D9[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D9[5])
+
+s17_9<-(log(SD$`2022/1/20`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_9*SD$D9[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_9*SD$D9[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D9[6])
+
+s18_9<-(log(SD$`2022/1/20`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_9*SD$D9[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_9*SD$D9[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_9*SD$D9[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D9[7])
+
+s19_9<-(log(SD$`2022/1/20`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_9*SD$D9[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_9*SD$D9[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_9*SD$D8[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_9*SD$D9[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D9[8])
+
+s20_9<-(log(SD$`2022/1/20`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_9*SD$D9[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_9*SD$D9[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_9*SD$D9[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_9*SD$D9[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_9*SD$D9[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D9[9])
+
+s21_9<-(log(SD$`2022/1/20`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*30/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_9*SD$D9[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_9*SD$D9[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_9*SD$D9[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_9*SD$D9[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_9*SD$D9[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_9*SD$D9[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_9*SD$D9[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_9*SD$D9[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_9*SD$D9[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D9[106])
+
+spot_20<-c(s10_9,s11_9,s12_9,s13_9,s14_9,s17_9,s18_9,s19_9,s20_9,s21_9)
+maturitu_20<-maturitu_10+10
+```
+# Spot rate 2022/1/21
+```{r}
+s0=bond.yields(as.Date("2022-01-21"), as.Date(ZERO$maturity.date[1]),ZERO$coupon[1],freq=2,ZERO$X2022.1.21[1],  
+                 convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),comp.freq = 2,redemption_value = 100)
+SD["D10"]= SD$days_to_mature+11
+
+s10_10<-(log(SD$`2022/1/20`[1]-
+              (100*SD$cr[1]/2)*exp(-1*s0*31/365))
+      -log(100+100*SD$cr[1]/2))*(-365/SD$D10[1])
+
+s11_10<-(log(SD$`2022/1/20`[2]-
+              (100*SD$cr[2]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[2]/2)*exp(-1*s10_1*SD$D10[1]/365))
+        -log(100+100*SD$cr[2]/2))*(-365/SD$D10[2])
+
+s12_10<-(log(SD$`2022/1/20`[3]-
+              (100*SD$cr[3]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[3]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[3]/2)*exp(-1*s11_10*SD$D10[2]/365))
+        -log(100+100*SD$cr[3]/2))*(-365/SD$D10[3])
+
+s13_10<-(log(SD$`2022/1/20`[4]-
+              (100*SD$cr[4]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[4]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[4]/2)*exp(-1*s12_10*SD$D10[3]/365))
+        -log(100+100*SD$cr[4]/2))*(-365/SD$D10[4])
+
+s14_10<-(log(SD$`2022/1/20`[5]-
+              (100*SD$cr[5]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[5]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[5]/2)*exp(-1*s13_10*SD$D10[4]/365))
+        -log(100+100*SD$cr[5]/2))*(-365/SD$D10[5])
+
+s17_10<-(log(SD$`2022/1/20`[6]-
+              (100*SD$cr[6]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[6]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s13_10*SD$D10[4]/365)-
+              (100*SD$cr[6]/2)*exp(-1*s14_10*SD$D10[5]/365))
+        -log(100+100*SD$cr[6]/2))*(-365/SD$D10[6])
+
+s18_10<-(log(SD$`2022/1/20`[7]-
+              (100*SD$cr[7]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[7]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s13_10*SD$D10[4]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s14_10*SD$D10[5]/365)-
+              (100*SD$cr[7]/2)*exp(-1*s17_10*SD$D10[6]/365))
+        -log(100+100*SD$cr[7]/2))*(-365/SD$D10[7])
+
+s19_10<-(log(SD$`2022/1/20`[8]-
+              (100*SD$cr[8]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[8]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s13_10*SD$D10[4]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s14_10*SD$D10[5]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s17_10*SD$D10[6]/365)-
+              (100*SD$cr[8]/2)*exp(-1*s18_10*SD$D10[7]/365))
+        -log(100+100*SD$cr[8]/2))*(-365/SD$D10[8])
+
+s20_10<-(log(SD$`2022/1/20`[9]-
+              (100*SD$cr[9]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[9]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s13_1*SD$D10[4]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s14_1*SD$D10[5]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s17_10*SD$D10[6]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s18_10*SD$D10[7]/365)-
+              (100*SD$cr[9]/2)*exp(-1*s19_10*SD$D10[8]/365))
+        -log(100+100*SD$cr[9]/2))*(-365/SD$D10[9])
+
+s21_10<-(log(SD$`2022/1/20`[10]-
+              (100*SD$cr[10]/2)*exp(-1*s0*31/365)-
+              (100*SD$cr[10]/2)*exp(-1*s10_10*SD$D10[1]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s11_10*SD$D10[2]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s12_10*SD$D10[3]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s13_10*SD$D10[4]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s14_10*SD$D10[5]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s17_10*SD$D10[6]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s18_10*SD$D10[7]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s19_10*SD$D10[8]/365)-
+              (100*SD$cr[10]/2)*exp(-1*s20_10*SD$D10[9]/365))
+        -log(100+100*SD$cr[10]/2))*(-365/SD$D10[106])
+
+spot_21<-c(s10_10,s11_10,s12_10,s13_10,s14_10,s17_10,s18_10,s19_10,s20_10,s21_10)
+maturitu_21<-maturitu_10+11
+```
+# plotting
+```{r}
+color1 <- c("#A6CEE3", "#1F78B4", "#B2DF8A" ,"#33A02C", "#FB9A99" ,"#E31A1C" ,"#FDBF6F" ,"#FF7F00", "#CAB2D6" ,"#6A3D9A")
+plot(maturitu_10/365,spot_10,t="l",col = color1[1],
+     xlab = "Maturity In Years", ylab = "Spot Rate", 
+     main = "5-Year Spot Curve",
+     ylim=c(0.005,0.018),xlim=c(0,6))
+lines(maturitu_11/365,spot_11,col = color1[2])
+lines(maturitu_12/365,spot_12,col = color1[3])
+lines(maturitu_13/365,spot_13,col = color1[4])
+lines(maturitu_14/365,spot_14,col = color1[5])
+lines(maturitu_17/365,spot_17,col = color1[6])
+lines(maturitu_18/365,spot_18,col = color1[7])
+lines(maturitu_19/365,spot_19,col = color1[8])
+lines(maturitu_20/365,spot_20,col = color1[9])
+lines(maturitu_21/365,spot_21,col = color1[20])
+legend("bottomright", 
+       legend=Date,
+       col=color1,lty=1, cex=0.8,
+       text.font=1)
+```
+
+
+#4)
+```{r}
+interspot_10<-approx(maturitu_10/365,spot_10,xout=c(1,2,3,4,5))
+interspot_11<-approx(maturitu_11/365,spot_10,xout=c(1,2,3,4,5))
+interspot_12<-approx(maturitu_12/365,spot_10,xout=c(1,2,3,4,5))
+interspot_13<-approx(maturitu_13/365,spot_10,xout=c(1,2,3,4,5))
+interspot_14<-approx(maturitu_14/365,spot_10,xout=c(1,2,3,4,5))
+interspot_17<-approx(maturitu_17/365,spot_10,xout=c(1,2,3,4,5))
+interspot_18<-approx(maturitu_18/365,spot_10,xout=c(1,2,3,4,5))
+interspot_19<-approx(maturitu_19/365,spot_10,xout=c(1,2,3,4,5))
+interspot_20<-approx(maturitu_20/365,spot_10,xout=c(1,2,3,4,5))
+interspot_21<-approx(maturitu_21/365,spot_10,xout=c(1,2,3,4,5))
+```
+
+```{r}
+fw_10_1_1<-(interspot_10$y[2]*2-interspot_10$y[1])/1
+fw_10_1_2<-(interspot_10$y[3]*3-interspot_10$y[1])/2
+fw_10_1_3<-(interspot_10$y[4]*4-interspot_10$y[1])/3
+fw_10_1_4<-(interspot_10$y[5]*5-interspot_10$y[1])/4
+fw_10<-c(fw_10_1_1,fw_10_1_2,fw_10_1_3,fw_10_1_4)
+
+fw_11_1_1<-(interspot_11$y[2]*2-interspot_11$y[1])/1
+fw_11_1_2<-(interspot_11$y[3]*3-interspot_11$y[1])/2
+fw_11_1_3<-(interspot_11$y[4]*4-interspot_11$y[1])/3
+fw_11_1_4<-(interspot_11$y[5]*5-interspot_11$y[1])/4
+fw_11<-c(fw_11_1_1,fw_11_1_2,fw_11_1_3,fw_11_1_4)
+
+fw_12_1_1<-(interspot_12$y[2]*2-interspot_12$y[1])/1
+fw_12_1_2<-(interspot_12$y[3]*3-interspot_12$y[1])/2
+fw_12_1_3<-(interspot_12$y[4]*4-interspot_12$y[1])/3
+fw_12_1_4<-(interspot_12$y[5]*5-interspot_12$y[1])/4
+fw_12<-c(fw_12_1_1,fw_12_1_2,fw_12_1_3,fw_12_1_4)
+
+fw_13_1_1<-(interspot_13$y[2]*2-interspot_13$y[1])/1
+fw_13_1_2<-(interspot_13$y[3]*3-interspot_13$y[1])/2
+fw_13_1_3<-(interspot_13$y[4]*4-interspot_13$y[1])/3
+fw_13_1_4<-(interspot_13$y[5]*5-interspot_13$y[1])/4
+fw_13<-c(fw_13_1_1,fw_13_1_2,fw_13_1_3,fw_13_1_4)
+
+fw_14_1_1<-(interspot_14$y[2]*2-interspot_14$y[1])/1
+fw_14_1_2<-(interspot_14$y[3]*3-interspot_14$y[1])/2
+fw_14_1_3<-(interspot_14$y[4]*4-interspot_14$y[1])/3
+fw_14_1_4<-(interspot_14$y[5]*5-interspot_14$y[1])/4
+fw_14<-c(fw_14_1_1,fw_14_1_2,fw_14_1_3,fw_14_1_4)
+
+fw_17_1_1<-(interspot_17$y[2]*2-interspot_17$y[1])/1
+fw_17_1_2<-(interspot_17$y[3]*3-interspot_17$y[1])/2
+fw_17_1_3<-(interspot_17$y[4]*4-interspot_17$y[1])/3
+fw_17_1_4<-(interspot_17$y[5]*5-interspot_17$y[1])/4
+fw_17<-c(fw_17_1_1,fw_17_1_2,fw_17_1_3,fw_17_1_4)
+
+fw_18_1_1<-(interspot_18$y[2]*2-interspot_18$y[1])/1
+fw_18_1_2<-(interspot_18$y[3]*3-interspot_18$y[1])/2
+fw_18_1_3<-(interspot_18$y[4]*4-interspot_18$y[1])/3
+fw_18_1_4<-(interspot_18$y[5]*5-interspot_18$y[1])/4
+fw_18<-c(fw_18_1_1,fw_18_1_2,fw_18_1_3,fw_18_1_4)
+
+fw_19_1_1<-(interspot_19$y[2]*2-interspot_19$y[1])/1
+fw_19_1_2<-(interspot_19$y[3]*3-interspot_19$y[1])/2
+fw_19_1_3<-(interspot_19$y[4]*4-interspot_19$y[1])/3
+fw_19_1_4<-(interspot_19$y[5]*5-interspot_19$y[1])/4
+fw_19<-c(fw_19_1_1,fw_19_1_2,fw_19_1_3,fw_19_1_4)
+
+fw_20_1_1<-(interspot_20$y[2]*2-interspot_20$y[1])/1
+fw_20_1_2<-(interspot_20$y[3]*3-interspot_20$y[1])/2
+fw_20_1_3<-(interspot_20$y[4]*4-interspot_20$y[1])/3
+fw_20_1_4<-(interspot_20$y[5]*5-interspot_20$y[1])/4
+fw_20<-c(fw_20_1_1,fw_20_1_2,fw_20_1_3,fw_20_1_4)
+
+fw_21_1_1<-(interspot_21$y[2]*2-interspot_21$y[1])/1
+fw_21_1_2<-(interspot_21$y[3]*3-interspot_21$y[1])/2
+fw_21_1_3<-(interspot_21$y[4]*4-interspot_21$y[1])/3
+fw_21_1_4<-(interspot_21$y[5]*5-interspot_21$y[1])/4
+fw_21<-c(fw_21_1_1,fw_21_1_2,fw_21_1_3,fw_21_1_4)
+```
+
+
+```{r}
+color1 <- c("#A6CEE3", "#1F78B4", "#B2DF8A" ,"#33A02C", "#FB9A99" ,"#E31A1C" ,"#FDBF6F" ,"#FF7F00", "#CAB2D6" ,"#6A3D9A")
+plot(c(1,2,3,4),fw_10,t="l",col = color1[1],
+     xlab = "Forward Years", ylab = "Forward rate", 
+     main = "Forward Curve",
+     ylim=c(0.014,0.018),xlim=c(1,5))
+lines(c(1,2,3,4),fw_11,col = color1[2])
+lines(c(1,2,3,4),fw_12,col = color1[3])
+lines(c(1,2,3,4),fw_13,col = color1[4])
+lines(c(1,2,3,4),fw_14,col = color1[5])
+lines(c(1,2,3,4),fw_17,col = color1[6])
+lines(c(1,2,3,4),fw_18,col = color1[7])
+lines(c(1,2,3,4),fw_19,col = color1[8])
+lines(c(1,2,3,4),fw_20,col = color1[9])
+lines(c(1,2,3,4),fw_21,col = color1[20])
+legend("bottomright", 
+       legend=Date,
+       col=color1,lty=1, cex=0.8,
+       text.font=1)
+```
+
+
+#5
+
+```{r}
+interyield_10<-approx(ytm10_1,ytm10,xout=c(1,2,3,4,5))
+interyield_11<-approx(ytm11_1,ytm11,xout=c(1,2,3,4,5))
+interyield_12<-approx(ytm12_1,ytm12,xout=c(1,2,3,4,5))
+interyield_13<-approx(ytm13_1,ytm13,xout=c(1,2,3,4,5))
+interyield_14<-approx(ytm14_1,ytm14,xout=c(1,2,3,4,5))
+interyield_17<-approx(ytm17_1,ytm17,xout=c(1,2,3,4,5))
+interyield_18<-approx(ytm18_1,ytm18,xout=c(1,2,3,4,5))
+interyield_19<-approx(ytm19_1,ytm19,xout=c(1,2,3,4,5))
+interyield_20<-approx(ytm20_1,ytm20,xout=c(1,2,3,4,5))
+interyield_21<-approx(ytm21_1,ytm21,xout=c(1,2,3,4,5))
+```
+
+```{r}
+intermatrix_1<-cbind(interyield_10$y,interyield_11$y,interyield_12$y,interyield_13$y,interyield_14$y,interyield_17$y,interyield_18$y,interyield_19$y,interyield_20$y,interyield_21$y)
+```
+
+```{r}
+intermatrix[1,5]
+
+```
+
+
+
+```{r}
+log_yield_1<-c()
+for (i  in c(1:9)){
+  log_yield_1[i]=log(intermatrix_1[1,i]/intermatrix_1[1,i+1])
+}
+
+log_yield_2<-c()
+for (i  in c(1:9)){
+  log_yield_2[i]=log(intermatrix_1[2,i]/intermatrix_1[2,i+1])
+}
+
+log_yield_3<-c()
+for (i  in c(1:9)){
+  log_yield_3[i]=log(intermatrix_1[3,i]/intermatrix_1[3,i+1])
+}
+
+log_yield_4<-c()
+for (i  in c(1:9)){
+  log_yield_4[i]=log(intermatrix_1[4,i]/intermatrix_1[4,i+1])
+}
+
+log_yield_5<-c()
+for (i  in c(1:9)){
+  log_yield_5[i]=log(intermatrix_1[5,i]/intermatrix_1[5,i+1])
+}
+```
+
+```{r}
+time_yield<-cbind(log_yield_1,log_yield_2,log_yield_3,log_yield_4,log_yield_5)
+time_yield
+yield_cov<-cov(time_yield)
+```
+
+```{r}
+intermatrix_2<-cbind(interspot_10$y,interspot_11$y,interspot_12$y,interspot_13$y,interspot_14$y,interspot_17$y,interspot_18$y,interspot_19$y,interspot_20$y,interspot_21$y)
+```
+
+
+```{r}
+log_forward_1<-c()
+for (i  in c(1:9)){
+  log_forward_1[i]=log(intermatrix_2[1,i]/intermatrix_2[1,i+1])
+}
+
+log_forward_2<-c()
+for (i  in c(1:9)){
+  log_forward_2[i]=log(intermatrix_2[2,i]/intermatrix_2[2,i+1])
+}
+
+log_forward_3<-c()
+for (i  in c(1:9)){
+  log_forward_3[i]=log(intermatrix_2[3,i]/intermatrix_2[3,i+1])
+}
+
+log_forward_4<-c()
+for (i  in c(1:9)){
+  log_forward_4[i]=log(intermatrix_2[4,i]/intermatrix_2[4,i+1])
+}
+```
+
+
+```{r}
+time_forward<-cbind(log_forward_1,log_forward_2,log_forward_3,log_forward_4)
+time_forward
+```
+```{r}
+forward_cov<-cov(time_forward)
+```
+
+
+```{r}
+print(eigen(yield_cov)$values)
+print(eigen(yield_cov)$vectors)
+```
+
+```{r}
+print(eigen(forward_cov)$values)
+print(eigen(forward_cov)$vectors)
+```
+
+
